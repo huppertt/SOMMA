@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    
+
+<!-- These folders need to reflect where the data is stored on yor computer -->
+    <datadir>/Users/theodorehuppert/Desktop/MuscleRecordIR/Data</datadir>
+    
+    <udpaddress>10.0.0.1</udpaddress>
+    <udpport>2390</udpport>
+  
+    <distances>10</distances>
+    <distances>20</distances>
+    <distances>30</distances>
+    <distances>40</distances>
+    
+    
+    <calibration660>2.1610</calibration660> 
+    <calibration660>9.4827</calibration660> 
+    <calibration660>30.8843</calibration660> 
+    <calibration660>83.1107</calibration660> 
+    
+    <calibration850>1.6377</calibration850> 
+    <calibration850>5.443</calibration850>   
+    <calibration850>13.5030</calibration850>
+    <calibration850> 28.1082</calibration850>        
+    
+</config>
+
+

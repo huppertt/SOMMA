@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{9B73DB70-A0BD-417A-82B7-03E373918CAA}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NIRSMuscle/MainWindow.cs">
+    <Files>
+      <File FileName="NIRSMuscle/Program.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="NIRSMuscle/Config.xml" />
+      <File FileName="NIRSMuscle/MainWindow.cs" Line="104" Column="30" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NIRSMuscle" expanded="True">
+            <Node name="NIRSMuscle" expanded="True">
+              <Node name="MainWindow.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.NIRSMuscle PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -26,7 +26,7 @@ public partial class MainWindow : Gtk.Window
 
     public int udpport;
     public string udpaddress;
-
+    int scanNumber;
     public string SubjID;
     public string ScanName;
     public string Comments;
@@ -57,7 +57,7 @@ public partial class MainWindow : Gtk.Window
         elemList = doc.GetElementsByTagName("udpport");
         udpport = Convert.ToInt32(elemList[0].InnerXml);
 
-
+        scanNumber = 1;
 
         // {time-EMG,EMG,EMG-FILTER TIME-NIRS,RAW1-4A,RAW1-4B,DOD-A,DOD-B,HBO,HBR,HBT,SO2}
         // {time-EMG,EMG,TIME-NIRS,RAW1-4A,RAW1-4B,DOD-A,DOD-B,HBO,HBR,HBT,SO2}
@@ -142,6 +142,8 @@ public partial class MainWindow : Gtk.Window
             mainthread.Start();
             isrunning = true;
             buttonStart.Label = "Stop";
+
+
         }
         else
         {
@@ -165,6 +167,9 @@ public partial class MainWindow : Gtk.Window
             filename = System.IO.Path.Combine(pathname, filename);
             SaveMyData(filename);
 
+            scanNumber++;
+            entryScanName.Text = String.Format("Scan-{0}", scanNumber);
+            StatusBarLabel2.Text = string.Format("{0}-{1}-{2}", SubjID, "<date>", entryScanName.Text);
         }
 
 
@@ -306,38 +311,45 @@ public partial class MainWindow : Gtk.Window
         while (mainthread.IsAlive)
         {
 
-            byte[] msg = udpClient.Receive(ref iPEndPoint);
-            string msgs = Encoding.ASCII.GetString(msg);
-            string[] msgss = msgs.Split(new char[] { ' ' });
-
-            MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
-            MyData[1].Add(Convert.ToDouble(msgss[1]));  // EMG
-        //    MyData[2].Add(EMGfilter.ProcessSample(Convert.ToDouble(msgss[1]))); // EMG-filtered
-
-
-            if (msgss.Length > 3)
+            try
             {
-                MyData[2].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-NIRS
-                MyData[3].Add(Convert.ToDouble(msgss[2]));  // Det1a
-                MyData[4].Add(Convert.ToDouble(msgss[3]));  // Det2a
-                MyData[5].Add(Convert.ToDouble(msgss[4]));  // Det3a
-                MyData[6].Add(Convert.ToDouble(msgss[5]));  // Det4a
+                byte[] msg = udpClient.Receive(ref iPEndPoint);
+                string msgs = Encoding.ASCII.GetString(msg);
+                string[] msgss = msgs.Split(new char[] { ' ' });
 
-                MyData[7].Add(Convert.ToDouble(msgss[6]));  // Det1b
-                MyData[8].Add(Convert.ToDouble(msgss[7]));  // Det2b
-                MyData[9].Add(Convert.ToDouble(msgss[8]));  // Det3b
-                MyData[10].Add(Convert.ToDouble(msgss[9]));  // Det4b
+                MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
+                MyData[1].Add(Convert.ToDouble(msgss[1]));  // EMG
+                                                            //    MyData[2].Add(EMGfilter.ProcessSample(Convert.ToDouble(msgss[1]))); // EMG-filtered
 
-                MyData[11].Add(Convert.ToDouble(msgss[10]));  // dODa
-                MyData[12].Add(Convert.ToDouble(msgss[11]));  // dODb
 
-                MyData[13].Add(Convert.ToDouble(msgss[12]));  // HbO
-                MyData[14].Add(Convert.ToDouble(msgss[13]));  // HbR
-                MyData[15].Add(Convert.ToDouble(msgss[14]));  // HbT
-                MyData[16].Add(Convert.ToDouble(msgss[15]));  // SO2
+                if (msgss.Length > 3)
+                {
+                    MyData[2].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-NIRS
+                    MyData[3].Add(Convert.ToDouble(msgss[2]));  // Det1a
+                    MyData[4].Add(Convert.ToDouble(msgss[3]));  // Det2a
+                    MyData[5].Add(Convert.ToDouble(msgss[4]));  // Det3a
+                    MyData[6].Add(Convert.ToDouble(msgss[5]));  // Det4a
 
-                drawingarea1.QueueDraw();
-                progressbar1.Pulse();
+                    MyData[7].Add(Convert.ToDouble(msgss[6]));  // Det1b
+                    MyData[8].Add(Convert.ToDouble(msgss[7]));  // Det2b
+                    MyData[9].Add(Convert.ToDouble(msgss[8]));  // Det3b
+                    MyData[10].Add(Convert.ToDouble(msgss[9]));  // Det4b
+
+                    MyData[11].Add(Convert.ToDouble(msgss[10]));  // dODa
+                    MyData[12].Add(Convert.ToDouble(msgss[11]));  // dODb
+
+                    MyData[13].Add(Convert.ToDouble(msgss[12]));  // HbO
+                    MyData[14].Add(Convert.ToDouble(msgss[13]));  // HbR
+                    MyData[15].Add(Convert.ToDouble(msgss[14]));  // HbT
+                    MyData[16].Add(Convert.ToDouble(msgss[15]));  // SO2
+
+                    drawingarea1.QueueDraw();
+                    progressbar1.Pulse();
+
+                }
+            }
+            catch
+            {
 
             }
         }
@@ -368,59 +380,59 @@ public partial class MainWindow : Gtk.Window
                     break;
                 case 1:  //HbO
                     MyDatasel = 13;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 2: //HbR
                     MyDatasel = 14;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 3: //HbT
                     MyDatasel = 15;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 4: //SO2
                     MyDatasel = 16;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 5: // dOD 660
                     MyDatasel = 11;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 6: //dOD 850
                     MyDatasel = 12;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 7:  // NIRS raw
                     MyDatasel = 3;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 8:  // NIRS raw
                     MyDatasel = 4;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 9:  // NIRS raw
                     MyDatasel = 5;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 10:  // NIRS raw
                     MyDatasel = 6;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 11:  // NIRS raw
                     MyDatasel = 7;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 12:  // NIRS raw
                     MyDatasel = 8;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 13:  // NIRS raw
                     MyDatasel = 9;
-                    timesel = 3;
+                    timesel = 2;
                     break;
                 case 14:  // NIRS raw
                     MyDatasel = 10;
-                    timesel = 3;
+                    timesel = 2;
                     break;
 
             }
@@ -627,6 +639,7 @@ public partial class MainWindow : Gtk.Window
     protected void EnterScanName(object sender, EventArgs e)
     {
         ScanName = entryScanName.Text;
+        StatusBarLabel2.Text = string.Format("{0}-{1}-{2}", SubjID, "<date>", ScanName);
     }
 
     protected void CloseProgram(object obj, DeleteEventArgs args)

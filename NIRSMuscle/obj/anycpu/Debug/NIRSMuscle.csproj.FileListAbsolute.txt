@@ -33,3 +33,4 @@
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csproj.CopyComplete
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.exe
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.pdb
+/Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csprojAssemblyReference.cache

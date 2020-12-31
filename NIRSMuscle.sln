@@ -14,4 +14,8 @@ Global
 		{9B73DB70-A0BD-417A-82B7-03E373918CAA}.Release|anycpu.ActiveCfg = Release|anycpu
 		{9B73DB70-A0BD-417A-82B7-03E373918CAA}.Release|anycpu.Build.0 = Release|anycpu
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.VersionControlPolicy = $1
+	EndGlobalSection
 EndGlobal

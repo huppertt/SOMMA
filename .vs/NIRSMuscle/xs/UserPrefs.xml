@@ -3,7 +3,7 @@
     <Files>
       <File FileName="NIRSMuscle/Program.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="NIRSMuscle/Config.xml" />
-      <File FileName="NIRSMuscle/MainWindow.cs" Line="104" Column="30" />
+      <File FileName="NIRSMuscle/MainWindow.cs" Line="298" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,8 +20,10 @@
   <MonoDevelop.Ide.ItemProperties.NIRSMuscle PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <Debugger.DebugSourceFolders />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
+  <AuthorInfo Name="Theodore Huppert" Email="HUPPERT1@pitt.edu" Copyright="" Company="" Trademark="" />
 </Properties>

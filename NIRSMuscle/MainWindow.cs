@@ -313,44 +313,46 @@ public partial class MainWindow : Gtk.Window
 
             try
             {
-                byte[] msg = udpClient.Receive(ref iPEndPoint);
-                string msgs = Encoding.ASCII.GetString(msg);
-                string[] msgss = msgs.Split(new char[] { ' ' });
+  
+                    byte[] msg = udpClient.Receive(ref iPEndPoint);
+                    string msgs = Encoding.ASCII.GetString(msg);
+                    string[] msgss = msgs.Split(new char[] { ' ' });
 
-                MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
-                MyData[1].Add(Convert.ToDouble(msgss[1]));  // EMG
-                                                            //    MyData[2].Add(EMGfilter.ProcessSample(Convert.ToDouble(msgss[1]))); // EMG-filtered
+                    MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
+                    MyData[1].Add(Convert.ToDouble(msgss[1]));  // EMG
+                                                                //    MyData[2].Add(EMGfilter.ProcessSample(Convert.ToDouble(msgss[1]))); // EMG-filtered
 
 
-                if (msgss.Length > 3)
-                {
-                    MyData[2].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-NIRS
-                    MyData[3].Add(Convert.ToDouble(msgss[2]));  // Det1a
-                    MyData[4].Add(Convert.ToDouble(msgss[3]));  // Det2a
-                    MyData[5].Add(Convert.ToDouble(msgss[4]));  // Det3a
-                    MyData[6].Add(Convert.ToDouble(msgss[5]));  // Det4a
+                    if (msgss.Length > 3)
+                    {
+                        MyData[2].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-NIRS
+                        MyData[3].Add(Convert.ToDouble(msgss[2]));  // Det1a
+                        MyData[4].Add(Convert.ToDouble(msgss[3]));  // Det2a
+                        MyData[5].Add(Convert.ToDouble(msgss[4]));  // Det3a
+                        MyData[6].Add(Convert.ToDouble(msgss[5]));  // Det4a
 
-                    MyData[7].Add(Convert.ToDouble(msgss[6]));  // Det1b
-                    MyData[8].Add(Convert.ToDouble(msgss[7]));  // Det2b
-                    MyData[9].Add(Convert.ToDouble(msgss[8]));  // Det3b
-                    MyData[10].Add(Convert.ToDouble(msgss[9]));  // Det4b
+                        MyData[7].Add(Convert.ToDouble(msgss[6]));  // Det1b
+                        MyData[8].Add(Convert.ToDouble(msgss[7]));  // Det2b
+                        MyData[9].Add(Convert.ToDouble(msgss[8]));  // Det3b
+                        MyData[10].Add(Convert.ToDouble(msgss[9]));  // Det4b
 
-                    MyData[11].Add(Convert.ToDouble(msgss[10]));  // dODa
-                    MyData[12].Add(Convert.ToDouble(msgss[11]));  // dODb
+                        MyData[11].Add(Convert.ToDouble(msgss[10]));  // dODa
+                        MyData[12].Add(Convert.ToDouble(msgss[11]));  // dODb
 
-                    MyData[13].Add(Convert.ToDouble(msgss[12]));  // HbO
-                    MyData[14].Add(Convert.ToDouble(msgss[13]));  // HbR
-                    MyData[15].Add(Convert.ToDouble(msgss[14]));  // HbT
-                    MyData[16].Add(Convert.ToDouble(msgss[15]));  // SO2
+                        MyData[13].Add(Convert.ToDouble(msgss[12]));  // HbO
+                        MyData[14].Add(Convert.ToDouble(msgss[13]));  // HbR
+                        MyData[15].Add(Convert.ToDouble(msgss[14]));  // HbT
+                        MyData[16].Add(Convert.ToDouble(msgss[15]));  // SO2
 
-                    drawingarea1.QueueDraw();
-                    progressbar1.Pulse();
-
-                }
+                        drawingarea1.QueueDraw();
+                        progressbar1.Pulse();
+                    
+                    }
+                
             }
             catch
             {
-
+              
             }
         }
     }
@@ -572,7 +574,7 @@ public partial class MainWindow : Gtk.Window
         }
         catch
         {
-
+            Console.WriteLine("Draw error");
         }
 
     }

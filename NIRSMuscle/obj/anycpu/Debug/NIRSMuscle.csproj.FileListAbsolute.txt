@@ -29,8 +29,8 @@
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/bin/Debug/System.ValueTuple.xml
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/bin/Debug/MathNet.Filtering.xml
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/bin/Debug/MathNet.Filtering.Kalman.xml
+/Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csprojAssemblyReference.cache
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csproj.CoreCompileInputs.cache
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csproj.CopyComplete
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.exe
 /Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.pdb
-/Users/theodorehuppert/Projects/SOMMA/NIRSMuscle/obj/anycpu/Debug/NIRSMuscle.csprojAssemblyReference.cache

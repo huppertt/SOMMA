@@ -3,14 +3,14 @@
     <Files>
       <File FileName="NIRSMuscle/Program.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="NIRSMuscle/Config.xml" />
-      <File FileName="NIRSMuscle/MainWindow.cs" Line="298" Column="1" />
+      <File FileName="NIRSMuscle/MainWindow.cs" Line="581" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NIRSMuscle" expanded="True">
             <Node name="NIRSMuscle" expanded="True">
-              <Node name="MainWindow.cs" selected="True" />
+              <Node name="UserInterface" selected="True" />
             </Node>
           </Node>
         </State>

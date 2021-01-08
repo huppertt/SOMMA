@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{9B73DB70-A0BD-417A-82B7-03E373918CAA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="NIRSMuscle/MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NIRSMuscle/Config.xml">
     <Files>
       <File FileName="NIRSMuscle/Program.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="NIRSMuscle/Config.xml" />
-      <File FileName="NIRSMuscle/MainWindow.cs" Line="581" Column="1" />
+      <File FileName="NIRSMuscle/Config.xml" Line="11" Column="5" />
+      <File FileName="NIRSMuscle/MainWindow.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="NIRSMuscle" expanded="True">
             <Node name="NIRSMuscle" expanded="True">
-              <Node name="UserInterface" selected="True" />
+              <Node name="Config.xml" selected="True" />
             </Node>
           </Node>
         </State>

@@ -10,11 +10,16 @@ using csmatio.types;
 using System.Xml;
 using System.IO;
 
+
 public partial class MainWindow : Gtk.Window
 {
     UdpClient udpClient;
     bool isrunning;
     public static Thread mainthread;
+    public string tempfilename;
+    public FileStream fileStream;
+    public StreamWriter streamWriter;
+
 //    public OnlineFilter EMGfilter;
 
     private static int MAXLISTLEN = 7200; // 10Hz * 12min
@@ -129,6 +134,24 @@ public partial class MainWindow : Gtk.Window
 
             events = new List<double>();
 
+
+            // TXT file
+            string[] paths = new string[] {MyDataFolder,
+                String.Format("{0}",entrySUbjID.Text) };
+            string pathname = System.IO.Path.Combine(paths);
+
+            if (!Directory.Exists(pathname))
+            {
+                Directory.CreateDirectory(pathname);
+            }
+
+            string filename = String.Format("{0}_{1}.csv", entrySUbjID.Text, entryScanName.Text);
+            tempfilename = System.IO.Path.Combine(pathname, filename);
+            fileStream = new FileStream(tempfilename, FileMode.OpenOrCreate);
+            streamWriter = new StreamWriter(fileStream, System.Text.Encoding.ASCII);
+
+
+
             Byte[] sendBytes2 = Encoding.ASCII.GetBytes("IDN?");
             udpClient.Send(sendBytes2, sendBytes2.Length);
             System.Net.IPEndPoint iPEndPoint = new System.Net.IPEndPoint(System.Net.IPAddress.Any, 0);
@@ -166,7 +189,7 @@ public partial class MainWindow : Gtk.Window
             string filename = String.Format("{0}_{1}_{2}.mat",entrySUbjID.Text,entryScanName.Text,DateTime.Now.ToString("MMMMddyyyy_HHmm"));
             filename = System.IO.Path.Combine(pathname, filename);
             SaveMyData(filename);
-
+            streamWriter.Dispose();
             scanNumber++;
             entryScanName.Text = String.Format("Scan-{0}", scanNumber);
             StatusBarLabel2.Text = string.Format("{0}-{1}-{2}", SubjID, "<date>", entryScanName.Text);
@@ -318,13 +341,20 @@ public partial class MainWindow : Gtk.Window
                     string msgs = Encoding.ASCII.GetString(msg);
                     string[] msgss = msgs.Split(new char[] { ' ' });
 
-                    MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
+                    streamWriter.Write(msgs);
+                    streamWriter.Write("\r\n");
+
+
+
+
+                MyData[0].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-EMG
                     MyData[1].Add(Convert.ToDouble(msgss[1]));  // EMG
                                                                 //    MyData[2].Add(EMGfilter.ProcessSample(Convert.ToDouble(msgss[1]))); // EMG-filtered
 
 
                     if (msgss.Length > 3)
                     {
+
                         MyData[2].Add(Convert.ToDouble(msgss[0]) / 1000);  // time-NIRS
                         MyData[3].Add(Convert.ToDouble(msgss[2]));  // Det1a
                         MyData[4].Add(Convert.ToDouble(msgss[3]));  // Det2a
